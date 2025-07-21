@@ -1,13 +1,7 @@
-from sqlalchemy.orm import Session
-from uuid import UUID, uuid4
 from datetime import datetime
-from database import connection
-from generators import profile_generator
-from models import Profile
-import insertor
-from database import connection
+from insertor import Insertor
 
-class ProfileInsert(insertor.Insertor):
+class ProfileInsert(Insertor):
     def __init__(self):
         super().__init__()
     
@@ -62,13 +56,13 @@ class ProfileInsert(insertor.Insertor):
             'is_super_admin': False,
             'is_anonymous': False
         }
-        
         # Parámetros para public.profiles
         profile_params = {
             'id': profile.get_id(),  # Mismo ID que el usuario
             'nombre': profile.get_nombre(),
             'role': 'patient'
         }
+        
         try:
             with conn.get_cursor() as cursor:
                 cursor.execute(user_query, user_params)

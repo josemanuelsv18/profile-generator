@@ -5,5 +5,5 @@ class Insertor(ABC):
         pass
 
     @abstractmethod
-    def insert(self):
+    def insert(self, conn, profile):
         pass
