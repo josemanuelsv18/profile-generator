@@ -1,7 +1,7 @@
 from datetime import datetime
-from insertor import Insertor
+from .insertor import Insertor
 
-class ProfileInsert(Insertor):
+class ProfileInsertor(Insertor):
     def __init__(self):
         super().__init__()
     

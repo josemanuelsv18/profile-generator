@@ -1,4 +1,4 @@
-from insertor import Insertor
+from .insertor import Insertor
 from datetime import datetime
 
 class AnswerInsertor(Insertor):
@@ -15,7 +15,7 @@ class AnswerInsertor(Insertor):
             CREATED_AT
         ) VALUES (
             %(preguntaId)s,
-            %(respuestaID)s,
+            %(respuestaId)s,
             %(profileId_response)s,
             %(profileId_paciente)s,
             %(CREATED_AT)s

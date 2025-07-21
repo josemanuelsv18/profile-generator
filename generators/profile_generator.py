@@ -1,4 +1,4 @@
-from generator import Generator
+from .generator import Generator
 from models.Profile import Profile
 from datetime import datetime
 import random
@@ -18,7 +18,7 @@ class ProfileGenerator(Generator):
     
     def radom_nationality(self):
         # List of possible nationalities
-        data = self.read_json('data/countries.json')
+        data = self.read_json('../data/names.json')
         #countries = ['Panamá', 'Colombia', 'Venezuela', 'China']
         countries = list(data.keys())
         nationality: str
@@ -29,10 +29,11 @@ class ProfileGenerator(Generator):
             nationality = countries[0]
         else:
             random_nationality = random.choice(countries[1:])
+            nationality = random_nationality
         return nationality
     
     def random_sex(self):
-        sex = random.randomint(0, 1)
+        sex = random.randint(0, 1)
         if sex == 0:
             sex = "masculino"
         else:
@@ -42,17 +43,17 @@ class ProfileGenerator(Generator):
     def random_name(self, sex, nationality):
         # Reads names from a JSON file and returns a random name based
         try:
-            data = self.read_json('data/names.json')
+            data = self.read_json('../data/names.json')
         except FileNotFoundError:
             print("Error: El archivo de nombres no se encontró.")
             return None
         try:
             name = ""
             if nationality == 'China': # Special case for China
-                random_ch_hispanic = random.randomint(0, 1) # 50% chance of being Chinise-Hispanic
+                random_ch_hispanic = random.randint(0, 1) # 50% chance of being Chinise-Hispanic
                 if random_ch_hispanic == 1: # If it's Hispanic-Chinese
-                    counrty = 'Panamá'
-                    name = random.choice(counrty['nombres'][sex]) 
+                    counrty = data['Panamá']
+                    name = random.choice(counrty['nombres'][sex])
             # If it's not China, proceed with the normal logic
             counrty = data[nationality]
             name = random.choice(counrty['nombres'][sex])
@@ -83,7 +84,7 @@ class ProfileGenerator(Generator):
         # Hash the password using bcrypt (cost factor of 10)
         salt = bcrypt.gensalt(rounds=10)
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-        return hashed_password
+        return hashed_password.decode('utf-8')
 
     def generate(self):
         # Generate a random profile

@@ -1,4 +1,4 @@
-from generator import Generator
+from .generator import Generator
 from models.Answer import Answer
 import random
 from datetime import datetime

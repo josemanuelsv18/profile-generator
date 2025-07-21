@@ -19,13 +19,13 @@ class Connection():
     
     @property
     def connection(self):
-        if not self._connection or not self._connection.is_connected():
+        if not self._connection or self._connection.closed != 0:
             self.open_connection()
         return self._connection
 
     @property
     def cursor(self):
-        if not self._cursor or self._connection.is_connected():
+        if not self._cursor or self._connection.closed != 0:
             self.open_connection()
             self._cursor = self._connection.cursor()
         return self._cursor
@@ -40,10 +40,13 @@ class Connection():
                 password=self.password,
                 dbname=self.db
             )
-            if self._connection.is_connected():
-                print(f'Connected to PostgreSQL database version: {self._connection.get_server_info()}')
+            if self._connection and self._connection.closed == 0:
+                print(f'Connected to PostgreSQL.')
                 self._cursor = self._connection.cursor() # Initialize cursor
                 return True
+            else:
+                print('Failed to connect')
+                return False
         except OperationalError as e:
             print(f"Error connecting to the database: {e}")
             return False
@@ -53,7 +56,7 @@ class Connection():
         if self._cursor:
             self._cursor.close()
             print('Cursor has been closed')
-        if self._connection and self._connection.is_connected():
+        if self._connection and self._connection.closed == 0:
             self._connection.close()
             print('Connection has been closed')
 
