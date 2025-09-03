@@ -1,4 +1,4 @@
-# Generador de Perfiles Falsos para Metodología de Investigación
+# Generador de Perfiles Falsos
 
 Este proyecto es una herramienta para generar perfiles de usuario falsos y respuestas asociadas, adaptados para ser insertados en una base de datos PostgreSQL. Está diseñado para apoyar prácticas y pruebas en el contexto de la metodología de investigación, permitiendo poblar bases de datos con datos simulados de manera automatizada.
 
