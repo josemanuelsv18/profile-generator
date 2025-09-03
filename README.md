@@ -1,6 +1,6 @@
 # Generador de Perfiles Falsos
 
-Este proyecto es una herramienta para generar perfiles de usuario falsos y respuestas asociadas, adaptados para ser insertados en una base de datos PostgreSQL. Está diseñado para apoyar prácticas y pruebas en el contexto de la metodología de investigación, permitiendo poblar bases de datos con datos simulados de manera automatizada.
+Este proyecto es una herramienta para generar perfiles de usuario falsos y respuestas asociadas, adaptados para ser insertados en una base de datos PostgreSQL. Está diseñado para apoyar prácticas y pruebas, permitiendo poblar bases de datos con datos simulados de manera automatizada.
 
 ## Características
 
@@ -91,20 +91,3 @@ El programa solicitará la cantidad de perfiles a generar y realizará la inserc
 - Python 3.10+
 - PostgreSQL
 - Paquetes: `psycopg2`, `bcrypt`, `python-dotenv`, etc.
-
-## Licencia
-
-Este proyecto está licenciado bajo la [GNU General Public License v3.0](LICENSE).
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request para sugerencias, mejoras o correcciones.
-
-## Autor
-
-Desarrollado por [Tu Nombre o Equipo].  
-Contacto: [tu-email@ejemplo.com]
-
----
-
-**Nota:** Este software se distribuye sin garantía de ningún tipo. Úsalo bajo tu propio riesgo y revisa la licencia
